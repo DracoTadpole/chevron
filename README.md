@@ -133,12 +133,19 @@ def inject_x(text, render, data):
     # inject data into scope
     return render(text, {'x': 'data'})
 
+def DOT_KEY(text, render, data):
+    if text in data:
+        return data[text]
+    else:
+        return ""
+
 args = {
-    'template': 'Hello, {{# first}} {{x}} || {{y}} || {{z}} {{/ first}}!  {{# inject_x}} {{x}} {{/ inject_x}}',
+    'template': 'Hello, {{# first}} {{x}} || {{y}} || {{z}} {{/ first}}!  {{# inject_x}} {{x}} {{/ inject_x}} {{#DOT_KEY}}a.b.c{{/DOT_KEY}}',
 
     'data': {
         'y': 'foo',
         'z': 'bar',
+        'a.b.c': 'x.y.z',
         'first': first,
         'inject_x': inject_x
     }
