@@ -8,6 +8,12 @@ try:
 except ImportError:  # not tested
     import json
 
+def DOT_KEY(text, render, data):
+    if text in data:
+        return data[text]
+    else:
+        return ""
+
 try:
     from .renderer import render
     from .metadata import version
@@ -22,7 +28,7 @@ def main(template, data={}, **kwargs):
             data_file = io.open(data, 'r', encoding='utf-8')
             data = json.load(data_file)
             data_file.close()
-
+            data['DOT_KEY'] = DOT_KEY
         args = {
             'template': template_file,
             'data': data

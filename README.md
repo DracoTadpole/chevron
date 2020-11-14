@@ -124,12 +124,12 @@ chevron supports lambdas
 ```python
 import chevron
 
-def first(text, render):
+def first(text, render, data):
     # return only first occurance of items
     result = render(text)
     return [ x.strip() for x in result.split(" || ") if x.strip() ][0]
 
-def inject_x(text, render):
+def inject_x(text, render, data):
     # inject data into scope
     return render(text, {'x': 'data'})
 
