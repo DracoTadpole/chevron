@@ -8,9 +8,9 @@ try:
 except ImportError:  # not tested
     import json
 
-def DOT_KEY(text, render, data):
-    if text in data:
-        return data[text]
+def DOT_KEY(text, render, scopes):
+    if scopes and scopes[0] and text in scopes[0]:
+        return scopes[0][text]
     else:
         return ""
 

@@ -133,9 +133,9 @@ def inject_x(text, render, data):
     # inject data into scope
     return render(text, {'x': 'data'})
 
-def DOT_KEY(text, render, data):
-    if text in data:
-        return data[text]
+def DOT_KEY(text, render, scopes):
+    if scopes and scopes[0] and text in scopes[0]:
+        return scopes[text]
     else:
         return ""
 

@@ -279,7 +279,7 @@ def render(template='', data={}, partials_path='.', partials_ext='mustache',
                              partials_dict=partials_dict,
                              padding=padding,
                              def_ldel=def_ldel, def_rdel=def_rdel,
-                             scopes=data and [data]+scopes or scopes), data)
+                             scopes=data and [data]+scopes or scopes), scopes)
 
                 if python3:
                     output += rend
